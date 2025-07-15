@@ -33,6 +33,8 @@ async function getPostgresVersion() {
 
 getPostgresVersion();
 
+//force api update
+//Test
 app.post("/signup/users", async (req, res) => {
     const client = await pool.connect();
 
