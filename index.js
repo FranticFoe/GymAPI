@@ -487,6 +487,7 @@ app.delete("/availabilities/:id", async (req, res) => {
         await client.query(`DELETE FROM bookings WHERE available_id = $1`, [id]);
 
         await client.query(`DELETE FROM availabilities WHERE id = $1`, [id]);
+        await client.query(`UPDATE availabilities SET is_fully_booked = FALSE WHERE id = $1;`, [id])
 
         return res.status(200).json({ message: "Slot deleted" });
     } catch (err) {
